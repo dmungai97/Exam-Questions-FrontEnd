@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet" />
+    <title>Exam Questions</title>
+    <style>
+      body {
+        font-family: 'Barlow', sans-serif !important;
+      }
+      /** 
+ * The default focus style is likely provided by Bootstrap or the browser
+ * but here we override everything else with a visually appealing cross-
+ * browser solution that works well on all focusable page elements
+ * including buttons, links, inputs, textareas, and selects.
+ */
+      *:focus {
+        outline: 0 !important;
+        /* use site bg color to create whitespace for faux focus ring */
+        box-shadow: 0 0 0 0.1rem #fff, 0 0 0 0.1rem #ccc !important;
+      }
+
+      /**
+ * Undo the above focused button styles when the element received focus
+ * via mouse click or touch, but not keyboard navigation.
+ */
+      *:focus:not(:focus-visible) {
+        outline: 0 !important;
+        box-shadow: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>
+      <strong
+        >We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to
+        continue.</strong
+      >
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>

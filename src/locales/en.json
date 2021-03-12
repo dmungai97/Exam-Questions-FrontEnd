@@ -1,0 +1,295 @@
+{
+  "about": {
+    "body": "<p>\n      Exam Questions was developed to randomly assign one of several questions from a pool to students. By giving students one of several variations,\n      it is less likely that cheating will occur.\n    </p>\n    <p>\n      It is possible to use D2L's quiz pool to attempt the same thing, but their random process leaves something to be desired. Since they generate a\n      number between 1 and the number of variations, and then assign that to the student, it ends up with an uneven distribution because, over a short\n      run, random number generators don't necessarily evenly distribute across the possible options.\n    </p>\n    <p>\n      This application solves that by dealing with the question pool as if it were a deck of cards. Once the card is gone, it cannot be distributed\n      again. For example, if you have ten options and twenty-three students, then three (rounding up from 2.3) of each option are put into our deck\n      for a total of thirty. Once one student is assigned the first question, there are twenty-nine in the deck and so on until all students have been\n      assigned a question. In this example, some questions will be assigned three times, and others only twice. But no question will be assigned more\n      than three times and no question will remain unused.\n    </p>\n    <p>\n      The application also records the IP address of the requestor and tries to ensure that no two students at the same IP address get the same\n      question. It does, however, still provide a question if that requirement cannot be met - like if all your students are in the same room.\n    </p>\n    <p>\n      The code for this application is created using VueJS and .NET 5.0. It is licensed under MIT license and you are free to host your own server.\n      Visit my GitHub repository here.\n    </p>",
+    "title": "About Exam Questions"
+  },
+  "account": {
+    "buttons": {
+      "save": "Save",
+      "updatePassword": "Update"
+    },
+    "curPassword": {
+      "label": "Current Password"
+    },
+    "email": {
+      "label": "Email",
+      "placeholder": "Enter your email address"
+    },
+    "name": {
+      "label": "Name",
+      "placeholder": "Enter name to display to students"
+    },
+    "newPassword": {
+      "label": "New Password"
+    },
+    "noAccessMessage": "You are not authorized to access the account page. Please log in first.",
+    "school": {
+      "label": "School"
+    },
+    "title": "Account"
+  },
+  "allocation": {
+    "authenticationCode": {
+      "label": "Authentication Code",
+      "placeholder": "Enter Code"
+    },
+    "course": "Find your course",
+    "credentials": "Enter your credentials",
+    "downloadButton": "Download your materials",
+    "exam": "Find your exam",
+    "professor": "Find your professor",
+    "school": "Find your school",
+    "student": "Find your name",
+    "studentNumber": {
+      "label": "Student Number",
+      "placeholder": "Enter Number"
+    }
+  },
+  "api": {
+    "InvalidCredentials": "You have provided invalid credentials. Please try again.",
+    "defaultError": "Something went wrong, please try again.",
+    "internalError": "Internal error. Please try again.",
+    "notAvailable": "You cannot access the materials outside of the exam time window."
+  },
+  "assignment": {
+    "documentColumn": "Document",
+    "ipAddressColumn": "IP Address",
+    "studentColumn": "Student",
+    "timeColumn": "Time"
+  },
+  "assignments": {
+    "buttons": {
+      "close": "Close"
+    },
+    "title": "Assignments"
+  },
+  "courseEntry": {
+    "button": {
+      "cancel": "Cancel",
+      "save": "Save"
+    },
+    "name": {
+      "label": "Name",
+      "placeholder": "Enter an identifier for the course"
+    },
+    "semester": {
+      "fall": "Fall",
+      "label": "Semester",
+      "spring": "Spring",
+      "winter": "Winter"
+    },
+    "title": "Course",
+    "year": {
+      "label": "Year",
+      "placeholder": "Year course offered (eg. 2021)"
+    }
+  },
+  "courseTable": {
+    "buttons": {
+      "addCourse": "Add Course",
+      "delete": "Delete",
+      "edit": "Edit",
+      "exams": "Show/Hide Exams",
+      "students": "Show Students"
+    },
+    "columns": {
+      "name": "Name",
+      "semester": "Semester",
+      "year": "Year"
+    },
+    "title": "Your courses"
+  },
+  "documentEntry": {
+    "buttons": {
+      "cancel": "Cancel",
+      "save": "Save"
+    },
+    "file": {
+      "label": "File Name",
+      "placeholder": "Name to show students"
+    },
+    "link": {
+      "label": "Link",
+      "placeholder": "Provide a Url Link to the document"
+    }
+  },
+  "documentTable": {
+    "buttons": {
+      "delete": "Delete",
+      "edit": "Edit"
+    },
+    "columns": {
+      "fileName": "File Name",
+      "link": "Link"
+    }
+  },
+  "examEntry": {
+    "authenticationCode": {
+      "label": "Authentication Code"
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "save": "Save"
+    },
+    "date": {
+      "label": "Date"
+    },
+    "durationMinutes": {
+      "label": "Duration (Minutes)",
+      "placeholder": "Enter exam time in minutes"
+    },
+    "limitedAccess": {
+      "label": "Access is only available between start and end time"
+    },
+    "messages": {
+      "oldDateWarning": "Cannot save with a date in the past"
+    },
+    "name": {
+      "label": "Name",
+      "placeholder": "Enter an identifier for the exam"
+    },
+    "startTime": {
+      "label": "Start Time",
+      "placeholder": "HH:mm"
+    },
+    "title": "Exam"
+  },
+  "examTable": {
+    "buttons": {
+      "assignments": "Student Assignments",
+      "delete": "Delete",
+      "edit": "Edit",
+      "questions": "Show/Hide Questions"
+    },
+    "columns": {
+      "code": "Code",
+      "duration": "Duration",
+      "name": "Name",
+      "startTime": "Starts"
+    }
+  },
+  "login": {
+    "buttons": {
+      "cancel": "Cancel",
+      "logIn": "Log In",
+      "register": "Register"
+    },
+    "email": {
+      "label": "Email",
+      "placeholder": "Enter email"
+    },
+    "password": {
+      "label": "Password",
+      "placeholder": "Enter password"
+    },
+    "title": "Login"
+  },
+  "navbar": {
+    "about": "About",
+    "account": "Account",
+    "home": "Home",
+    "logOut": "Log Out",
+    "login": "Login",
+    "title": "Exam Questions"
+  },
+  "questionEntry": {
+    "buttons": {
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "edit": "Edit",
+      "save": "Save"
+    },
+    "description": {
+      "label": "Description",
+      "placeholder": "Provide a question name"
+    },
+    "title": "Question"
+  },
+  "questionTable": {
+    "buttons": {
+      "documents": "Show/Hide Documents"
+    },
+    "columns": {
+      "description": "Description"
+    }
+  },
+  "schoolEntry": {
+    "buttons": {
+      "cancel": "Cancel",
+      "save": "Save"
+    },
+    "name": {
+      "label": "Name",
+      "placeholder": "Enter your school's name"
+    },
+    "title": "School"
+  },
+  "studentEntry": {
+    "buttons": {
+      "cancel": "Cancel",
+      "save": "Save"
+    },
+    "name": {
+      "label": "Name",
+      "placeholder": "Enter the student's name"
+    },
+    "number": {
+      "label": "Number",
+      "placeholder": "Enter the student's identifier"
+    },
+    "title": "Student"
+  },
+  "studentTable": {
+    "buttons": {
+      "addStudent": "Add Student",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "edit": "Edit",
+      "import": "Import"
+    },
+    "columns": {
+      "name": "Name"
+    },
+    "deleteConfirm": {
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "message": "Are you sure?"
+    },
+    "title": "Students",
+    "upload": {
+      "dropPlaceholder": "Drop file here...",
+      "placeholder": "Choose a file or drop it here...",
+      "tooltip": "Upload a csv file with three columns: Student Number, Last Name, and First Name. Do not include a header row."
+    }
+  },
+  "responseCodes": {
+    "NotLoggedIn": "You must be logged in to make changes.",
+    "EmptyStudentFields": "Student name and number cannot be empty.",
+    "StudentInUse": "Student is in use and cannot be deleted.",
+    "InvalidEmail": "Email is invalid or already in use.",
+    "InvalidName": "Name is invalid.",
+    "InvalidSchool": "School was not found.",
+    "InvalidUser": "User not found.",
+    "InvalidPassword": "Password does not match.",
+    "InvalidCredentials": "Invalid email and/or password",
+    "EmailInUse": "Email is already in use.",
+    "IncorrectCredentials": "Email and password do not match our records.",
+    "DeleteOtherUser": "You cannot delete another user.",
+    "UserInUse": "User is in use and cannot be deleted.",
+    "InvalidCourseFields": "Invalid name, or year is in the past.",
+    "InvalidCourseName": "Name cannot be empty.",
+    "NoEditOldCourse": "Cannot modify an old course.",
+    "CourseInUse": "Course is in use and cannot be deleted.",
+    "InvalidDocumentFields": "Invalid document name and/or url link.",
+    "EmptyDocumentName": "File name must not be empty.",
+    "DocumentInUse": "Document is in use and cannot be deleted.",
+    "InvalidExamStart": "Start time must be in the future.",
+    "InvalidExamFields": "Authentication code and exam name must not be empty.",
+    "ExamInUse": "Exam is in use and cannot be deleted.",
+    "InvalidQuestionFields": "Description cannot be empty",
+    "QuestionInUse": "Question is in use and cannot be deleted.",
+    "InvalidSchoolFields": "School name cannot be empty",
+    "SchoolInUse": "School is in use and cannot be deleted.",
+    "WeakPassword": "Password is easily guessed and is not allowed."
+  }
+}
