@@ -8,4 +8,6 @@ This application solves that by dealing with the question pool as if it were a d
 
 The application also records the IP address of the requestor and tries to ensure that no two students at the same IP address get the same question. It does, however, still provide a question if that requirement cannot be met - like if all your students are in the same room.
 
-The application is written in JavaScript using the VueJS framework. Styling is done with the Bootstrap-vue project. The vue-i18n project is used to localize text. Signalr via the @latelier/vue-signalr project is used to notify the client whenever a student receives an allocation of documents. 
+The application is written in JavaScript using the VueJS framework. Styling is done with the Bootstrap-vue project. The vue-i18n project is used to localize text. Signalr via the @latelier/vue-signalr project is used to notify the client whenever a student receives an allocation of documents.
+
+This project pairs with the Web API implemented in my examQuestionCore repository.
