@@ -60,6 +60,7 @@ export default {
         this.$emit('close', true);
         this.emitMessage = false;
         this.modalShow = false;
+        clearAllStateDirty(this.value);
       } else {
         setAllStateDirty(this.value);
       }
