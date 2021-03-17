@@ -9,7 +9,7 @@
         :type="type"
         :state="data.state()"
         :placeholder="placeholder"
-        @blur="data.setDirty()"
+        @blur="handleBlur"
         @keyup.enter="handleEnter"
       ></b-form-input>
       <slot></slot>
@@ -59,6 +59,10 @@ export default {
     },
     handleInput() {
       this.$emit('input', this.data);
+    },
+    handleBlur() {
+      this.data.setDirty();
+      this.$emit('blur');
     }
   }
 };

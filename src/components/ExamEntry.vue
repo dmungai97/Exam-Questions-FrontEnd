@@ -9,7 +9,13 @@
       <b-form-group :label="$t('examEntry.date.label')">
         <b-form-datepicker v-model="startDate" :min="minDate" :state="startTime.state()"></b-form-datepicker>
       </b-form-group>
-      <TextInput v-model="startTime" :label="$t('examEntry.startTime.label')" :placeholder="$t('examEntry.startTime.placeholder')" type="text">
+      <TextInput
+        v-model="startTime"
+        :label="$t('examEntry.startTime.label')"
+        :placeholder="$t('examEntry.startTime.placeholder')"
+        type="text"
+        @blur="formatTime"
+      >
         <b-input-group-append>
           <b-form-timepicker v-model="startTime.text" button-only right></b-form-timepicker>
         </b-input-group-append>
@@ -81,15 +87,7 @@ export default {
       handler(newVal) {
         if (newVal && newVal.start) {
           this.startDate = newVal.start.toISOString();
-          this.startTime.text = `${newVal.start.getHours()}:${newVal.start.getMinutes()}`;
-        }
-      }
-    },
-    //remove the seconds -- that's what the control outputs and not possible to change the control
-    startTime: {
-      handler(newVal) {
-        if (newVal) {
-          this.startTime.text = newVal.substring(0, 5);
+          this.formatTime();
         }
       }
     }
@@ -137,17 +135,19 @@ export default {
       let minutes = 0;
       if (this.startTime.text && this.startTime.text.length > 0) {
         const timeParts = this.startTime.text.split(':');
-        if (timeParts.length > 1) {
+        if (timeParts.length > 0) {
           const h = parseInt(timeParts[0]);
-          const m = parseInt(timeParts[1]);
-          if (!isNaN(h) && h >= 0 && h < HOURS_IN_DAY && !isNaN(m) && m >= 0 && m < MINUTES_IN_HOUR) {
+          if (!isNaN(h) && h >= 0 && h < HOURS_IN_DAY) {
             hours = h;
+          }
+        }
+        if (timeParts.length > 1) {
+          const m = parseInt(timeParts[1]);
+          if (!isNaN(m) && m >= 0 && m < MINUTES_IN_HOUR) {
             minutes = m;
           }
         }
       }
-      this.startTime.text = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
-
       const start = moment(this.startDate)
         .hours(hours)
         .minutes(minutes);
@@ -156,6 +156,12 @@ export default {
       this.value.start = start.toDate();
 
       return start;
+    },
+    formatTime() {
+      const hours = this.value.start.getHours();
+      const minutes = this.value.start.getMinutes();
+      const newTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+      this.startTime.text = newTime;
     },
     isDateTimeValid() {
       return this.calcDateTime().isAfter(moment());

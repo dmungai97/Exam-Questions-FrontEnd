@@ -1,4 +1,4 @@
-import { get, update, del } from '../helpers/api';
+import { get, update, del, postFormData } from '../helpers/api';
 
 const studentComparer = (a, b) => {
   return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
@@ -26,7 +26,7 @@ const student = {
       await update('student', student, 'updateStudent', commit);
     },
     async importStudents(context, data) {
-      const resp = update(`student/import/${data.courseId}`, data.formData);
+      const resp = await postFormData(`student/import/${data.courseId}`, data.formData);
 
       if (resp && resp.id > 0) {
         await context.dispatch('fetchStudents', data.courseId);

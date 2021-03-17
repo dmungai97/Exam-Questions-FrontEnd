@@ -83,6 +83,25 @@ const update = async (apiName, obj, mutationName, commit) => {
   return resp;
 };
 
+const postFormData = async (apiName, formData) => {
+  let resp;
+
+  try {
+    const url = `${baseUrl}${apiName}`;
+
+    const result = await fetch(url, {
+      method: 'POST',
+      credentials: 'include',
+      body: formData
+    });
+    resp = await result.json();
+  } catch (err) {
+    throw new CustomError(i18n.t('api.internalError'));
+  }
+
+  return resp;
+};
+
 const fetchAssignmentZip = async obj => {
   try {
     const url = `${baseUrl}assignment/student`;
@@ -120,4 +139,4 @@ const fetchAssignmentZip = async obj => {
   }
 };
 
-export { get, del, update, fetchAssignmentZip };
+export { get, del, update, postFormData, fetchAssignmentZip };
