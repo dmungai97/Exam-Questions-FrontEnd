@@ -47,6 +47,7 @@
   },
   "api": {
     "InvalidCredentials": "You have provided invalid credentials. Please try again.",
+    "notFound": "The exam requested was not found.",
     "defaultError": "Something went wrong, please try again.",
     "internalError": "Internal error. Please try again.",
     "notAvailable": "You cannot access the materials outside of the exam time window."
@@ -59,7 +60,8 @@
   },
   "assignments": {
     "buttons": {
-      "close": "Close"
+      "close": "Close",
+      "export": "Export"
     },
     "title": "Assignments"
   },

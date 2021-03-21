@@ -102,6 +102,40 @@ const postFormData = async (apiName, formData) => {
   return resp;
 };
 
+const fetchAllocationExport = async (examId, examName) => {
+  try {
+    const url = `${baseUrl}assignment/export/${examId}`;
+
+    const result = await fetch(url, {
+      method: 'GET',
+      credentials: 'include'
+    });
+    if (result.status == 200) {
+      let csv = await result.blob();
+      const csvUrl = URL.createObjectURL(csv);
+
+      var a = document.createElement('a');
+      a.style = 'display: none';
+      a.href = csvUrl;
+      a.download = `${examName}.csv`;
+      document.body.appendChild(a);
+      a.click();
+
+      setTimeout(() => {
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(csvUrl);
+      });
+    } else if (result.status == 401) {
+      throw new CustomError(i18n.t('api.InvalidCredentials'));
+    } else if (result.status == 400) {
+      throw new CustomError(i18n.t('api.notFound'));
+    }
+  } catch (err) {
+    if (err instanceof CustomError) throw err;
+    else throw new CustomError(i18n.t('api.internalError'));
+  }
+};
+
 const fetchAssignmentZip = async obj => {
   try {
     const url = `${baseUrl}assignment/student`;
@@ -139,4 +173,4 @@ const fetchAssignmentZip = async obj => {
   }
 };
 
-export { get, del, update, postFormData, fetchAssignmentZip };
+export { get, del, update, postFormData, fetchAssignmentZip, fetchAllocationExport };

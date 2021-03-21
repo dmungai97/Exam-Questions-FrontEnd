@@ -11,6 +11,9 @@
         <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage"></b-pagination>
       </template>
       <template v-slot:modal-footer="{ cancel }">
+        <b-button size="sm" variant="secondary-outline" @click="exportAllocations()">
+          {{ $t('assignments.buttons.export') }}
+        </b-button>
         <b-button size="sm" variant="secondary-outline" @click="cancel()">
           {{ $t('assignments.buttons.close') }}
         </b-button>
@@ -22,6 +25,7 @@
 /* eslint-disable no-debugger */
 import { mapActions, mapState, mapMutations } from 'vuex';
 import dateTimeFormatter from '../helpers/format';
+import { fetchAllocationExport } from '../helpers/api';
 
 export default {
   name: 'AssignmentTable',
@@ -92,6 +96,8 @@ export default {
     }
   },
   computed: {
+    ...mapState('exam', ['exams']),
+    ...mapState('course', ['courses']),
     ...mapState('student', ['students']),
     ...mapState('document', ['documents']),
     ...mapState('assignment', ['assignments']),
@@ -114,7 +120,16 @@ export default {
     ...mapActions('student', ['fetchStudents']),
     ...mapActions('assignment', ['fetchAssignments']),
     ...mapMutations('student', ['setStudents']),
-    ...mapMutations('assignment', ['setAssignments'])
+    ...mapMutations('assignment', ['setAssignments']),
+    async exportAllocations() {
+      try {
+        const name = `${this.courses.find(c => c.id == this.courseId).name} ${this.exams.find(e => e.id == this.examId).name}`;
+        await fetchAllocationExport(this.examId, name);
+      } catch (err) {
+        this.alertMessage = err.message;
+        this.showAlert = true;
+      }
+    }
   }
 };
 </script>
